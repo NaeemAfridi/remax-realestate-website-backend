@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // modern JS output
+    "module": "commonjs", // for Node.js
+    "rootDir": "src", // where your TS source code is
+    "outDir": "dist", // where compiled JS will go
+    "esModuleInterop": true, // allow default imports from CJS
+    "forceConsistentCasingInFileNames": true,
+    "strict": true, // enables all strict type checks
+    "skipLibCheck": true, // faster builds, skip .d.ts checks
+    "resolveJsonModule": true, // if you import .json files
+    "types": ["node"] // gives Node.js types globally
+  },
+  "include": ["src"], // only compile files from src
+  "exclude": ["node_modules", "dist"] // don’t compile these
+}
