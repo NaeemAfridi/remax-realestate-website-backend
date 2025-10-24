@@ -37,7 +37,7 @@ export class AgentController {
         throw new AppError("Agent application already submitted", 400);
       }
 
-      // ✅ Create new agent application
+      //  Create new agent application
       const agent = await Agent.create({
         userId,
         bio: req.body.bio,
@@ -52,7 +52,7 @@ export class AgentController {
         isActive: false,
       });
 
-      // ✅ Update user’s agent verification status
+      //  Update user’s agent verification status
       user.agentVerificationStatus = "pending";
       user.agentId = agent._id as Types.ObjectId;
       await user.save();

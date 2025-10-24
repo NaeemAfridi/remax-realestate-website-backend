@@ -1,5 +1,5 @@
-// ===== ROLE CONTROLLER (Clean Version, Agent Logic Removed) =====
-// packages/backend/src/controllers/RoleController.ts
+// ===== ROLE CONTROLLER =====
+// packages/backend/src/controllers/role.controllers.ts
 
 import { NextFunction, Request, Response } from "express";
 import { User } from "../models/User";
