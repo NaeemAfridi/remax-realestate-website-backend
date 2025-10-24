@@ -13,9 +13,9 @@ import { notFoundHandler } from "./middleware/notFoundHandler";
 import { AuthRoutes } from "./routes/auth.routes";
 import { UserRoutes } from "./routes/user.routes";
 import { AgentRoutes } from "./routes/agent.routes";
-// import { PropertyRoutes } from "./routes/PropertyRoutes";
-// import { OfficeRoutes } from "./routes/OfficeRoutes";
-// import { SearchRoutes } from "./routes/SearchRoutes";
+import { RoleRoutes } from "./routes/role.routes";
+import { PropertyRoutes } from "./routes/property.routes";
+import { OfficeRoutes } from "./routes/office.routes";
 
 // Load environment variables
 dotenv.config();
@@ -102,14 +102,13 @@ class Server {
   }
 
   private configureRoutes(): void {
-    // // API routes
+    //===========  API routes
     this.app.use("/api/auth", new AuthRoutes().router);
     this.app.use("/api/users", new UserRoutes().router);
     this.app.use("/api/agents", new AgentRoutes().router);
-
-    // this.app.use("/api/properties", new PropertyRoutes().router);
-    // this.app.use("/api/offices", new OfficeRoutes().router);
-    // this.app.use("/api/search", new SearchRoutes().router);
+    this.app.use("/api/role", new RoleRoutes().router);
+    this.app.use("/api/properties", new PropertyRoutes().router);
+    this.app.use("/api/offices", new OfficeRoutes().router);
 
     // API documentation
     this.app.get("/api", (req: Request, res: Response) => {
