@@ -37,18 +37,18 @@ export class OfficeController {
         hasActiveListings,
       } = req.query;
 
-      // ✅ Parse pagination safely
+      //   Parse pagination safely
       const pageNum = Math.max(parseInt(page as string, 10) || 1, 1);
       const limitNum = Math.min(parseInt(limit as string, 10) || 20, 100);
       const skip = (pageNum - 1) * limitNum;
 
-      // ✅ Base query
+      //   Base query
       const query: any = {
         isActive: true,
         "settings.displayOnWebsite": true,
       };
 
-      // ✅ Filters
+      //   Filters
       if (city) {
         query["address.city"] = { $regex: new RegExp(city as string, "i") };
       }
@@ -72,7 +72,7 @@ export class OfficeController {
         ];
       }
 
-      // ✅ Geo filter
+      //   Geo filter
       if (coordinates) {
         const [lng, lat] = (coordinates as string)
           .split(",")
@@ -89,7 +89,7 @@ export class OfficeController {
         }
       }
 
-      // ✅ Sorting
+      //   Sorting
       const sort: any = {};
       const validSortFields = [
         "name",
@@ -102,7 +102,7 @@ export class OfficeController {
         sort.name = 1;
       }
 
-      // ✅ Fetch data in parallel
+      //   Fetch data in parallel
       const [offices, total] = await Promise.all([
         Office.find(query)
           .populate("manager", "firstName lastName email phone profileImage")
@@ -114,7 +114,7 @@ export class OfficeController {
         Office.countDocuments(query),
       ]);
 
-      // ✅ Return formatted response
+      //   Return formatted response
       res.status(200).json({
         success: true,
         message: "Offices fetched successfully",

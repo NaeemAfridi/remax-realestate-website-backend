@@ -24,9 +24,9 @@ export interface IUserDocument extends Document {
   phone?: string;
   role: "buyer" | "seller" | "agent" | "manager" | "admin";
   onboardingCompleted?: {
-    buyer: boolean;
-    seller: boolean;
-    agent: boolean;
+    buyer?: boolean;
+    seller?: boolean;
+    agent?: boolean;
   };
   managerApplication?: {
     status: "none" | "pending" | "approved" | "rejected";
